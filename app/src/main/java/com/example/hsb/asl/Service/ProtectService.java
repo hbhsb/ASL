@@ -2,13 +2,10 @@ package com.example.hsb.asl.Service;
 
 import android.app.Service;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.IBinder;
 
-import com.example.hsb.asl.receiver.ScreenReceiver;
-
-public class MyService extends Service {
-    public MyService() {
+public class ProtectService extends Service {
+    public ProtectService() {
     }
 
     @Override
@@ -19,17 +16,14 @@ public class MyService extends Service {
 
     @Override
     public void onCreate() {
+        Intent intent = new Intent(this, MyService.class);
+        startService(intent);
         super.onCreate();
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_SCREEN_ON);
-        filter.addAction(Intent.ACTION_SCREEN_OFF);
-        ScreenReceiver receiver = new ScreenReceiver();
-        registerReceiver(receiver, filter);
     }
 
     @Override
     public void onDestroy() {
-        Intent intent = new Intent(this, ProtectService.class);
+        Intent intent = new Intent(this, MyService.class);
         startService(intent);
         super.onDestroy();
     }
