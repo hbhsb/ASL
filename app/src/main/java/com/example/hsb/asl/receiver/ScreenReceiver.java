@@ -29,6 +29,8 @@ public class ScreenReceiver extends BroadcastReceiver {
             }
             manager.authenticate(null, null, 0, callback, null);
         }
+
+
         if (!MainActivity.isShow) {
             MainActivity.isShow = true;
             Intent jmpMAC = new Intent(context, MainActivity.class);
