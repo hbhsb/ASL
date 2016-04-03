@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.fingerprint.FingerprintManager;
-import android.util.Log;
 
 import com.example.hsb.asl.MainActivity;
 import com.example.hsb.asl.utils.XLockLayer;
@@ -48,9 +47,9 @@ public class ScreenReceiver extends BroadcastReceiver {
     public class ACallback extends FingerprintManager.AuthenticationCallback {
         @Override
         public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
-            Log.e("hhhh", "认证了");
+//            Log.e("hhhh", "认证了");
             MainActivity.xLockLayer.unlock();
-            Log.e("hhhh", "isLock：" + XLockLayer.isLocked);
+//            Log.e("hhhh", "isLock：" + XLockLayer.isLocked);
             manager.authenticate(null, null, 0, new VoidBack(), null);
             MainActivity.isShow = false;
             if (activity != null) {
@@ -62,7 +61,7 @@ public class ScreenReceiver extends BroadcastReceiver {
     public class VoidBack extends FingerprintManager.AuthenticationCallback {
         @Override
         public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
-            Log.e("hhhh", "一个无用的回调");
+//            Log.e("hhhh", "一个无用的回调");
         }
     }
 }
