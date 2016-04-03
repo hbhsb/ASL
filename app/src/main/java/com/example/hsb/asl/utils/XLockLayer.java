@@ -9,12 +9,12 @@ import android.view.WindowManager;
  * Created by 黄帅博 on 4/3/2016.
  */
 public class XLockLayer {
+    public static boolean isLocked;
     private static XLockLayer mXLockLayer;
     private Activity mActivity;
     private WindowManager mWindowsManager;
     private View mLockView;
     private WindowManager.LayoutParams mLockViewLayoutParams;
-    private boolean isLocked;
 
     private XLockLayer(Activity activity) {
         mActivity = activity;
