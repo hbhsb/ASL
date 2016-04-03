@@ -8,6 +8,8 @@ import android.os.IBinder;
 import com.example.hsb.asl.receiver.ScreenReceiver;
 
 public class MyService extends Service {
+    private ScreenReceiver receiver;
+
     public MyService() {
     }
 
@@ -23,14 +25,18 @@ public class MyService extends Service {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
-        ScreenReceiver receiver = new ScreenReceiver();
+        receiver = new ScreenReceiver();
         registerReceiver(receiver, filter);
+        Intent intent = new Intent(this, ProtectService.class);
+        startService(intent);
     }
 
     @Override
     public void onDestroy() {
         Intent intent = new Intent(this, ProtectService.class);
-        startService(intent);
+        stopService(intent);
+//        startService(intent);
         super.onDestroy();
+        unregisterReceiver(receiver);
     }
 }

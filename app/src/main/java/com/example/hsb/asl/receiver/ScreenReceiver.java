@@ -21,6 +21,7 @@ public class ScreenReceiver extends BroadcastReceiver {
         this.activity = activity;
     }
 
+
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();

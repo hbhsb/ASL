@@ -24,6 +24,7 @@ public class ProtectService extends Service {
     @Override
     public void onDestroy() {
         Intent intent = new Intent(this, MyService.class);
+        stopService(intent);
         startService(intent);
         super.onDestroy();
     }
